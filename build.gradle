@@ -1,0 +1,44 @@
+
+subprojects {
+  
+  repositories {
+    mavenCentral()
+    jcenter()
+    
+    maven {
+      url "https://github.com/TkmTwoProjects/tkmtwo-mvn-repo/raw/master/release"
+    }
+  }
+  group = 'com.tkmtwo'
+  version = '0.0.0'
+  
+  ext {
+    
+    //
+    // Dependency Versions
+    //
+    depVersionGuava = '18.0'
+    depVersionJunit = '4.12'
+    //depVersionTkmTwoCommon = '1.1.1'
+    depVersionSpringFramework = '4.1.6.RELEASE'
+    depVersionJackson = '2.5.2'
+    depVersionLogback = '1.1.3'
+    depVersionSlf4J = '1.7.12'
+    
+    //
+    // Javadoc Links
+    //
+    javadocLinks = [
+      "http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/",
+      "http://docs.oracle.com/javase/7/docs/api/"
+    ] as String[]
+    
+  }
+  
+}
+
+
+task wrapper(type: Wrapper) { 
+  gradleVersion = '2.4'
+}
+
