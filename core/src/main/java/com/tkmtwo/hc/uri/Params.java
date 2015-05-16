@@ -99,6 +99,9 @@ public class Params {
   }
 
   
+  public boolean putAll(String n, Iterable<String> vs) {
+    return getValueMap().putAll(n, vs);
+  }
   public boolean put(String n, String v) {
     return getValueMap().put(n, v);
   }
@@ -109,9 +112,16 @@ public class Params {
     return put(n, String.valueOf(i));
   }
 
+
+
+  public boolean putAll(Param p, Iterable<String> vs) {
+    getParams().add(p);
+    return putAll(p.getName(), vs);
+  }
   public boolean put(Param p, String v) {
     getParams().add(p);
-    return getValueMap().put(p.getName(), v);
+    //return getValueMap().put(p.getName(), v);
+    return put(p.getName(), v);
   }
   public boolean put(Param p, boolean b) {
     return put(p, String.valueOf(b));
@@ -120,6 +130,9 @@ public class Params {
     return put(p, String.valueOf(i));
   }
 
+
+
+  
   public Set<String> keySet() {
     return getValueMap().keySet();
   }

@@ -43,6 +43,14 @@ configurations {
   all*.exclude module: 'log4j'
 }
 
+sourceSets {
+  test {
+    resources {
+      srcDir "${System.env.HOME}/.gradle/resources"
+    }
+  }
+}
+
 jar {
   baseName = rootProject.name
   appendix = project.name

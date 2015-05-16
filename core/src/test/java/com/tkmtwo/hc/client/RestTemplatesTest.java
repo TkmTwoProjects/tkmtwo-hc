@@ -22,19 +22,14 @@ package com.tkmtwo.hc.client;
 //import static org.junit.Assert.assertNotNull;
 //import static org.junit.Assert.assertNull;
 //import static org.junit.Assert.assertTrue;
-//import static org.junit.Assert.fail;
+import static org.junit.Assert.fail;
 
-//import com.google.common.base.Joiner;
-//import java.util.Collection;
-//import java.util.List;
-//import org.junit.Before;
+import java.util.Properties;
+import org.junit.Before;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
-//import org.springframework.http.MediaType;
-//import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
-
 
 /**
  *
@@ -42,16 +37,29 @@ import org.springframework.web.client.RestTemplate;
  */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public final class RestTemplatesTest {
+  
+  private Properties properties = new Properties();
+  
+  @Before
+  public void setUp() throws Exception {
+    properties = new Properties();
 
-  private String uname = "admin";
-  private String passwd = "luv2Service!Now";
-  private String locationUri = "https://dev15351.service-now.com/api/now/table/cmn_location?sysparm_limit=1";
+    try {
+      properties.load(ClassLoader.getSystemResourceAsStream("hc-test.properties"));
+    } catch (Exception ex) {
+      fail("Error reading properties: " + ex.getMessage());
+    }
+  }
+  
   
   
   @Test
   public void test000String() {
-    RestTemplate rt = RestTemplates.build(uname, passwd);
-    String locationResponseBody = rt.getForObject(locationUri, String.class);
+    RestTemplate rt = RestTemplates.build(properties.getProperty("uname"),
+                                          properties.getProperty("passwd"));
+    
+    String locationResponseBody = rt.getForObject(properties.getProperty("locationUri"),
+                                                  String.class);
     System.out.println("I got: " + locationResponseBody);
   }
 

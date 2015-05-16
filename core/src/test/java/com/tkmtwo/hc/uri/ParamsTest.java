@@ -25,6 +25,7 @@ import static org.junit.Assert.assertTrue;
 //import static org.junit.Assert.fail;
 
 import com.google.common.base.Joiner;
+import com.google.common.collect.ImmutableList;
 import java.util.Collection;
 import java.util.List;
 import org.junit.Before;
@@ -246,6 +247,34 @@ public final class ParamsTest {
     assertTrue(ps.put(setParam, "bright-red"));
     assertTrue(ps.put(setParam, "bright-green"));
     assertTrue(ps.put(setParam, "bright-blue"));
+    assertEquals(6, ps.getValues(setParam).size());
+  }    
+
+  @Test
+  public void test0031SetPutAll() {
+    Params ps = new Params();
+    List<String> colorOrigs = ImmutableList.of("red", "green", "blue");
+    assertTrue(ps.putAll(setParam, colorOrigs));
+    
+    List<String> colors = ps.getValues(setParam);
+    assertNotNull(colors);
+    assertEquals(3, colors.size());
+
+    List<String> colorBrights = ImmutableList.of("bright-red", "bright-green", "bright-blue");
+    assertTrue(ps.putAll(setParam, colorBrights));
+    
+    List<String> plusBrightColors = ps.getValues(setParam);
+    assertNotNull(plusBrightColors);
+    assertEquals(6, plusBrightColors.size());
+    
+    
+    assertTrue(ps.put(setParam, "red"));
+    assertTrue(ps.put(setParam, "green"));
+    assertTrue(ps.put(setParam, "blue"));
+    assertTrue(ps.put(setParam, "bright-red"));
+    assertTrue(ps.put(setParam, "bright-green"));
+    assertTrue(ps.put(setParam, "bright-blue"));
+    assertEquals(6, ps.getValues(setParam).size());
   }    
 
 
