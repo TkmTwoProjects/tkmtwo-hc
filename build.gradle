@@ -10,7 +10,7 @@ subprojects {
     }
   }
   group = 'com.tkmtwo'
-  version = '0.1.0'
+  version = '0.2.0'
   
   ext {
     
@@ -19,7 +19,7 @@ subprojects {
     //
     depVersionGuava = '18.0'
     depVersionJunit = '4.12'
-    //depVersionTkmTwoCommon = '1.1.1'
+    depVersionTkmTwoCommon = '1.2.0'
     depVersionSpringFramework = '4.1.6.RELEASE'
     depVersionJackson = '2.5.2'
     depVersionLogback = '1.1.3'
