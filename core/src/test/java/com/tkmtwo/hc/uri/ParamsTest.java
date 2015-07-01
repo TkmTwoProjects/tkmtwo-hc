@@ -20,7 +20,7 @@ package com.tkmtwo.hc.uri;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-//import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 //import static org.junit.Assert.fail;
 
@@ -103,7 +103,6 @@ public final class ParamsTest {
 
   }
   
-  
   @Test
   public void test0010Scalar() {
     Params ps = new Params();
@@ -117,8 +116,26 @@ public final class ParamsTest {
     assertEquals("blue", colors.get(0));
   }
     
+  @Test
+  public void test0011ScalarSingleValue() {
+    Params ps = new Params();
+    assertTrue(ps.put(scalarParam, "red"));
+    assertTrue(ps.put(scalarParam, "green"));
+    assertTrue(ps.put(scalarParam, "blue"));
 
+    assertEquals("blue",
+                 ps.getValues(scalarParam).get(0));
+  }
   
+  @Test(expected = IndexOutOfBoundsException.class)
+  public void test0012ScalarDoesNotExist() {
+    Params ps = new Params();
+    assertTrue(ps.put(scalarParam, "red"));
+    assertTrue(ps.put(scalarParam, "green"));
+    assertTrue(ps.put(scalarParam, "blue"));
+
+    assertNull(ps.getValues("does-not-exist").get(0));
+  }
   
   
   
