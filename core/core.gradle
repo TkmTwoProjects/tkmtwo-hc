@@ -19,12 +19,11 @@ dependencies {
   compile "org.slf4j:slf4j-api:${depVersionSlf4J}"
   compile "org.springframework:spring-web:${depVersionSpringFramework}"
 
-  runtime "ch.qos.logback:logback-classic:${depVersionLogback}"
-  runtime "ch.qos.logback:logback-core:${depVersionLogback}"
-  runtime "org.slf4j:jcl-over-slf4j:${depVersionSlf4J}"
-  runtime "org.slf4j:jul-to-slf4j:${depVersionSlf4J}"
-  runtime "org.slf4j:log4j-over-slf4j:${depVersionSlf4J}"
-
+  runtime "org.apache.logging.log4j:log4j-core:${depVersionLog4J2}"
+  runtime "org.apache.logging.log4j:log4j-jcl:${depVersionLog4J2}"
+  runtime "org.apache.logging.log4j:log4j-jul:${depVersionLog4J2}"
+  runtime "org.apache.logging.log4j:log4j-slf4j-impl:${depVersionLog4J2}"
+  
   testCompile "junit:junit:${depVersionJunit}"
 }
 
@@ -39,16 +38,14 @@ uploadArchives {
 
 
 configurations {
-  all*.exclude module: 'commons-logging'
-  all*.exclude module: 'log4j'
+  //all*.exclude group: 'commons-logging'
+  all*.exclude group: 'log4j'
+  all*.exclude group: 'ch.qos.logback'
 }
 
-sourceSets {
-  test {
-    resources {
-      srcDir "${System.env.HOME}/.gradle/resources"
-    }
-  }
+
+processTestResources {
+  filter (org.apache.tools.ant.filters.ReplaceTokens, tokens: rootProject.ext.projectTokens)
 }
 
 jar {

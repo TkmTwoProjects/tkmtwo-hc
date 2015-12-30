@@ -45,7 +45,8 @@ public final class RestTemplatesTest {
     properties = new Properties();
 
     try {
-      properties.load(ClassLoader.getSystemResourceAsStream("hc-test.properties"));
+      //properties.load(ClassLoader.getSystemResourceAsStream("com/tkmtwo/hc/client/RestTemplatesTesthc-test.properties"));
+      properties.load(ClassLoader.getSystemResourceAsStream("com/tkmtwo/hc/client/RestTemplatesTest.properties"));
     } catch (Exception ex) {
       fail("Error reading properties: " + ex.getMessage());
     }

@@ -18,7 +18,7 @@
 
 package com.tkmtwo.hc.uri;
 
-import com.google.common.base.MoreObjects;
+//import com.google.common.base.MoreObjects;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.LinkedHashMultiset;

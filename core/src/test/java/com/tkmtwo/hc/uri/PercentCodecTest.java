@@ -1,29 +1,34 @@
 package com.tkmtwo.hc.uri;
 
-import java.net.URI;
 
-import org.junit.Test;
 import static org.junit.Assert.assertEquals;
+//import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
-import java.util.BitSet;
-import java.util.Map;
-import java.nio.charset.Charset;
-import java.util.HashMap;
 
+//import java.net.URI;
+//import java.nio.charset.Charset;
+//import java.util.BitSet;
+import java.util.HashMap;
+import java.util.Map;
+import org.junit.Test;
+
+/**
+ *
+ *
+ */
 public class PercentCodecTest {
   
   
-  private void exerciseCodec(PercentCodec pc, Map<String,String> m)
+  private void exerciseCodec(PercentCodec pc, Map<String, String> m)
     throws Exception {
 
-    for (Map.Entry<String,String> me : m.entrySet()) {
+    for (Map.Entry<String, String> me : m.entrySet()) {
       assertEquals(String.format("Failed encoding on %s -> %s%n", me.getKey(), me.getValue()),
                    me.getValue(), pc.encode(me.getKey()));
     }
     
-    for (Map.Entry<String,String> me : m.entrySet()) {
+    for (Map.Entry<String, String> me : m.entrySet()) {
       assertEquals(String.format("Failed decoding on %s -> %s%n", me.getKey(), me.getValue()),
                    me.getKey(), pc.decode(me.getValue()));
     }
@@ -69,7 +74,7 @@ public class PercentCodecTest {
     throws Exception
   {
 
-    Map<String,String> m = new HashMap<String,String>();
+    Map<String, String> m = new HashMap<String, String>();
     m.put("LoremIpsum", "LoremIpsum");
     m.put("Lorem Ipsum", "Lorem%20Ipsum");
 
@@ -115,7 +120,7 @@ public class PercentCodecTest {
     throws Exception
   {
 
-    Map<String,String> m = new HashMap<String,String>();
+    Map<String, String> m = new HashMap<String, String>();
     m.put("LoremIpsum", "LoremIpsum");
     m.put("Lorem Ipsum", "Lorem%20Ipsum");
 
@@ -158,7 +163,7 @@ public class PercentCodecTest {
     throws Exception
   {
 
-    Map<String,String> m = new HashMap<String,String>();
+    Map<String, String> m = new HashMap<String, String>();
     m.put("LoremIpsum", "LoremIpsum");
     m.put("Lorem Ipsum", "Lorem%20Ipsum");
 
@@ -203,7 +208,7 @@ public class PercentCodecTest {
     throws Exception
   {
 
-    Map<String,String> m = new HashMap<String,String>();
+    Map<String, String> m = new HashMap<String, String>();
     m.put("LoremIpsum", "LoremIpsum");
     m.put("Lorem Ipsum", "Lorem%20Ipsum");
 
