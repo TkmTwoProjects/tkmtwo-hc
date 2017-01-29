@@ -16,7 +16,7 @@ subprojects {
     }
   }
   group = 'com.tkmtwo'
-  version = '0.4.0'
+  version = '0.4.1'
   
   ext {
     
@@ -24,12 +24,13 @@ subprojects {
     // Dependency Versions
     //
     depVersionGuava = '19.0'
-    depVersionJackson = '2.6.4'
+    depVersionHttpClient = '4.5.3'
+    depVersionJackson = '2.8.6'
     depVersionJunit = '4.12'
     depVersionLog4J2 = '2.5'
     depVersionLogback = '1.1.3'
-    depVersionSlf4J = '1.7.13'
-    depVersionSpringFramework = '4.2.4.RELEASE'
+    depVersionSlf4J = '1.7.22'
+    depVersionSpringFramework = '4.3.6.RELEASE'
     depVersionTkmTwoCommon = '1.3.0'
     
     //

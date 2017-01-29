@@ -15,7 +15,7 @@ dependencies {
   compile "com.fasterxml.jackson.core:jackson-databind:${depVersionJackson}"
   compile "com.google.guava:guava:${depVersionGuava}"
   compile "com.tkmtwo:tkmtwo-common:${depVersionTkmTwoCommon}"
-  compile "org.apache.httpcomponents:httpclient:4.4.1"
+  compile "org.apache.httpcomponents:httpclient:${depVersionHttpClient}"
   compile "org.slf4j:slf4j-api:${depVersionSlf4J}"
   compile "org.springframework:spring-web:${depVersionSpringFramework}"
 
@@ -30,8 +30,8 @@ dependencies {
 uploadArchives {
   repositories {
     mavenDeployer {
-      repository(url: "file://$buildDir/repo")
-      //repository(url: "file://$rootDir/../tkmtwo-mvn-repo/release")
+      //repository(url: "file://$buildDir/repo")
+      repository(url: "file://$rootDir/../tkmtwo-mvn-repo/release")
     }
   }
 }

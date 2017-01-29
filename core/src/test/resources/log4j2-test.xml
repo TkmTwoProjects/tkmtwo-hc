@@ -4,12 +4,12 @@
   <Properties>
     <Property name="LOG_DIR">build/log</Property>
     <Property name="LOG_LEVEL">TRACE</Property>
-    <Property name="LOG_PATTERN">%d{yyyy-MM-dd HH:mm:ss.SSS} %-5p %c{1.} - %m%n</Property>
+    <Property name="LOG_PATTERN">%d{yyyy-MM-dd HH:mm:ss.SSS} %-5p %t %c{1.} - %m%n</Property>
   </Properties>
 
   <Appenders>
     <Console name="CONSOLE" target="SYSTEM_OUT">
-      <patternlayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5p %C %c{1.} - %m%n"/>
+      <patternlayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5p %t %C %c{1.} - %m%n"/>
     </Console>
     
     <File name="HTTPCLIENT_FILE" fileName="${LOG_DIR}/httpclient.log">
