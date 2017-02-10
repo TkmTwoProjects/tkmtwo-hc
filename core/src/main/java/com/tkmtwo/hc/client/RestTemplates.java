@@ -37,13 +37,21 @@ public class RestTemplates {
   public static RestTemplate build(String uname, String passwd) {
     return build(HttpClients.build(uname, passwd));
   }
+  
+  public static RestTemplate build(String uname, String passwd,
+                                   String ntlmDomain, String ntmlWorkstation) {
+    return build(HttpClients.build(uname, passwd, ntlmDomain, ntmlWorkstation));
+  }
+  
   public static RestTemplate build(HttpClient hc) {
     return build(new HttpComponentsClientHttpRequestFactory(hc));
   }
+  
   public static RestTemplate build(HttpComponentsClientHttpRequestFactory requestFactory) {
     List<HttpMessageConverter<?>> messageConverters = new ArrayList<>();
     return build(requestFactory, messageConverters);
   }
+  
   public static RestTemplate build(HttpComponentsClientHttpRequestFactory requestFactory,
                                    List<HttpMessageConverter<?>> messageConverters) {
     RestTemplate rt = null;

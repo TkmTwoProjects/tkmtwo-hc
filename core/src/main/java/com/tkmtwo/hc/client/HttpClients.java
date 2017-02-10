@@ -88,6 +88,25 @@ public class HttpClients {
   
   
   public static HttpClient build(String uname, String passwd,
+                                 String ntlmDomain, String ntlmWorkstation) {
+    
+    return build(uname,                      //String uname,
+                 passwd,                     //String passwd,
+                 ntlmDomain,                 //String ntlmDomain,
+                 ntlmWorkstation,            //String ntlmWorkstation,
+                 CONN_TIMEOUT,               //int connectTimeout,
+                 CONN_REQUEST_TIMEOUT,       //int connectionRequestTimeout,
+                 CONN_SOCKET_TIMEOUT,        //int socketTimeout,
+                 CONN_MAX_TOTAL,             //int maxConnections,
+                 CONN_MAX_PER_ROUTE,         //int maxConnectionsPerRoute,
+                 null,                       //String sslProtocols,
+                 null,                       //String proxyHost,
+                 -1);                        //int proxyPort
+    
+  }
+  
+  
+  public static HttpClient build(String uname, String passwd,
                                  int connTimeout, int connMaxTotal, int connMaxPerRoute) {
     
     PoolingHttpClientConnectionManager pcm = new PoolingHttpClientConnectionManager();
